@@ -3,29 +3,29 @@ import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } fro
 export const theme: ThemeUserConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: 'Astro Theme Pure',
+  title: "Sijolin' Blog",
   /** Will be used in index page & copyright declaration */
-  author: 'Pure Lab',
+  author: 'Sijolin',
   /** Description metadata for your website. Can be used in page metadata. */
-  description: 'Stay hungry, stay foolish',
+  description: '路虽远，行则将至。',
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
   favicon: '/favicon/favicon.ico',
   /** Specify the default language for this site. */
   locale: {
-    lang: 'en-US',
+    lang: 'zh_CN',
     attrs: 'en_US',
     // Date locale
-    dateLocale: 'en-US',
+    dateLocale: 'zh-CN',
     dateOptions: {
-      day: 'numeric',
+      year: 'numeric',
       month: 'short',
-      year: 'numeric'
+      day: 'numeric'
     }
   },
   /** Set a logo image to show in the homepage. */
   logo: {
     src: 'src/assets/avatar.png',
-    alt: 'Avatar'
+    alt: 'Sijolin Avatar'
   },
 
   // === Global configuration ===
@@ -36,11 +36,11 @@ export const theme: ThemeUserConfig = {
   // Still in test
   head: [
     /* Telegram channel */
-    // {
-    //   tag: 'meta',
-    //   attrs: { name: 'telegram:channel', content: '@cworld0_cn' },
-    //   content: ''
-    // }
+    {
+      tag: 'meta',
+      attrs: { name: '', content: '' },
+      content: ''
+    }
   ],
   customCss: [],
 
@@ -48,7 +48,6 @@ export const theme: ThemeUserConfig = {
   header: {
     menu: [
       { title: 'Blog', link: '/blog' },
-      { title: 'Docs', link: '/docs' },
       { title: 'Projects', link: '/projects' },
       { title: 'Links', link: '/links' },
       { title: 'About', link: '/about' }
@@ -63,26 +62,30 @@ export const theme: ThemeUserConfig = {
     links: [
       // Registration link
       {
-        title: 'Moe ICP 114514',
-        link: 'https://icp.gov.moe/?keyword=114514',
-        style: 'text-sm' // Uno/TW CSS class
+        title: '饿 ICP 备 114514号',
+        link: 'https://www.travellings.cn/go.html',
+        style: 'text-sm opacity-75 hover:opacity-100' // 悬停变色 + 字体大小
       },
       {
-        title: 'Travelling',
+        title: '开往',
         link: 'https://www.travellings.cn/go.html',
-        style: 'text-sm'
+        style: 'text-sm font-medium hover:text-blue-500' // 悬停变色 + 加粗
       },
       // Privacy Policy link
       {
-        title: 'Site Policy',
-        link: '/terms/list',
-        pos: 2 // position set to 2 will be appended to copyright line
+        title: '隐私政策',
+        link: '/privacy',
+        pos: 2, // position set to 2 will be appended to copyright line
+        style: 'text-sm hover:underline' // 悬停下划线
       }
     ],
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
     credits: true,
     /** Optional details about the social media accounts for this site. */
-    social: { github: 'https://github.com/cworld1/astro-theme-pure' }
+    social: {
+      github: 'https://github.com/sijolin',
+      email: 'mailto:vty4190@qq.com'
+     }
   },
 
   content: {
@@ -109,8 +112,8 @@ export const integ: IntegrationUserConfig = {
     applyTip: [
       { name: 'Name', val: theme.title },
       { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://astro-pure.js.org/' },
-      { name: 'Avatar', val: 'https://astro-pure.js.org/favicon/favicon.ico' }
+      { name: 'Link', val: 'https://sijolin.com/' },
+      { name: 'Avatar', val: 'https://sijolin.com/images/avatar.png' }
     ]
   },
   // Enable page search function
@@ -147,19 +150,51 @@ export const integ: IntegrationUserConfig = {
   waline: {
     enable: true,
     // Server service link
-    server: 'https://astro-theme-pure-waline.arthals.ink/',
-    // Refer https://waline.js.org/en/guide/features/emoji.html
-    emoji: ['bmoji', 'weibo'],
-    // Refer https://waline.js.org/en/reference/client/props.html
-    additionalConfigs: {
-      // search: false,
-      pageview: true,
-      comment: true,
-      locale: {
-        reaction0: 'Like',
-        placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
-      },
-      imageUploader: false
+      server: 'https://example.sijolin.com/',
+      // Refer https://waline.js.org/en/guide/features/emoji.html
+      emoji: ['bmoji', 'weibo'],
+      // Refer https://waline.js.org/en/reference/client/props.html
+      additionalConfigs: {
+        // search: false,
+        pageview: true,
+        comment: true,
+        locale: {
+          reaction0: 'Like',
+          placeholder: '真正重要的东西，用眼睛是看不见的。」——写下你的想法吧',
+          nick: '昵称',
+          mail: '邮箱',
+          link: '网址（可选）',
+        },
+  
+        // 图片上传功能
+        imageUploader: false,
+  
+        // 表情面板设置
+        emojiCDN: '', // 自定义表情CDN
+        emojiMaps: {}, // 自定义表情映射
+  
+        // 字数限制
+        wordLimit: 0, // 0表示无限制
+  
+        // 评论列表分页
+        pageSize: 10,
+  
+        // 必填项设置
+        requiredFields: ['nick', 'mail'], // 必须填写昵称和邮箱
+  
+        // 匿名评论
+        anonymous: true, // 允许匿名评论
+  
+        // 复制评论链接
+        copyright: true, // 显示版权信息
+  
+        // 自定义CSS类名
+        meta: ['nick', 'mail', 'link'],
+        metaPlaceholder: {
+          nick: '请输入昵称',
+          mail: '请输入邮箱地址',
+          link: '请输入网址(可选)'
+      }
     }
   }
 }

@@ -10,7 +10,8 @@ import FriendList from '@/components/links/FriendList.astro'
 const headings = [
   { depth: 2, slug: 'common-links', text: 'Common Links' },
   { depth: 2, slug: 'special-links', text: 'Special Links' },
-  { depth: 2, slug: 'apply-links', text: 'Apply Links' }
+  { depth: 2, slug: 'apply-links', text: 'Apply Links' },
+  { depth: 2, slug: 'small-circle', text: 'Small Circle' }
 ]
 
 const { friends } = links
@@ -21,12 +22,6 @@ const linksConf = config.integ.links
   <p>怎么可能有顺序呢，当然是随机的~ It's random</p>
   <h2 id='common-links'>Common Links</h2>
   <FriendList list={friends[0]} />
-  <Collapse title='Links with Bad Status'>
-    <FriendList list={friends[1]} />
-  </Collapse>
-  <Collapse title='Link History Book'>
-    <Timeline events={linksConf.logbook} />
-  </Collapse>
   <h2 id='special-links'>Special Links</h2>
   <FriendList list={friends[2]} />
 
@@ -49,16 +44,27 @@ const linksConf = config.integ.links
     }
   </blockquote>
 
-  <p>
-    申请时还请按照这个模板留言（<a
-      href='https://github.com/cworld1/astro-theme-pure/blob/main/public/links.json'
-      target='_blank'>提交 PR</a
-    > 或许也是个更快的办法）。此外有关申请说明：
-  </p>
+  <p>申请时还请按照这个模板留言。此外有关申请说明：</p>
   <ul>
     <li>在你的友链上添加了本站；</li>
     <li>请确保你的站点活着；</li>
     <li>博客内容不违反国家法律。</li>
   </ul>
   <Comment slot='bottom' />
+
+  <h2 id='small-circle'>Small Circle</h2>
+  <div id='friend-circle-lite-root' class='not-prose'>Loading...</div>
+  <script>
+    import '@/assets/styles/fc.css'
+
+    import { FriendCircle } from '@/plugins/friendCircle'
+
+    const fc = new FriendCircle()
+    fc.init({
+      private_api_url: 'https://friend-circle-lite-nu.vercel.app/',
+      page_turning_number: 10,
+      error_img: 'https://cravatar.cn/avatar/57d8260dfb55501c37dde588e7c3852c'
+    })
+    fc.load()
+  </script>
 </PageLayout>

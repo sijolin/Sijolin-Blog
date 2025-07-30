@@ -1,9 +1,10 @@
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-import vercel from '@astrojs/vercel'
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+import mdx from '@astrojs/mdx'
+import AutoImport from 'astro-auto-import'
 
 // Others
 // import { visualizer } from 'rollup-plugin-visualizer'
@@ -25,15 +26,16 @@ import config from './src/site.config.ts'
 // https://astro.build/config
 export default defineConfig({
   // Top-Level Options
-  site: 'https://astro-pure.js.org',
+  site: 'https://sijolin.com',
+  output: 'static',
   // base: '/docs',
   trailingSlash: 'never',
 
   // Adapter
   // https://docs.astro.build/en/guides/deploy/
   // 1. Vercel (serverless)
-  adapter: vercel(),
-  output: 'server',
+  // adapter: vercel(),
+  // output: 'server',
   // 2. Vercel (static)
   // adapter: vercelStatic(),
   // 3. Local (standalone)
@@ -50,7 +52,10 @@ export default defineConfig({
   integrations: [
     // astro-pure will automatically add sitemap, mdx & unocss
     // sitemap(),
-    // mdx(),
+    AutoImport({
+      imports: [],
+    }),
+    mdx(),
     AstroPureIntegration(config)
     // (await import('@playform/compress')).default({
     //   SVG: false,
@@ -85,10 +90,16 @@ export default defineConfig({
     ],
     // https://docs.astro.build/en/guides/syntax-highlighting/
     shikiConfig: {
+      theme: 'dracula',
       themes: {
         light: 'github-light',
         dark: 'github-dark'
       },
+      defaultColor: false, // 禁用默认色
+      langAlias: {
+        C: 'c'
+      },
+      wrap: true, // 启用自动换行以防止水平滚动
       transformers: [
         transformerNotationDiff(),
         transformerNotationHighlight(),
