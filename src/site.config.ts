@@ -84,7 +84,7 @@ export const theme: ThemeUserConfig = {
     /** Optional details about the social media accounts for this site. */
     social: {
       github: 'https://github.com/sijolin',
-      email: 'mailto:vty4190@qq.com'
+      email: 'mailto:chat@sijolin.com'
      }
   },
 
