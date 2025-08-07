@@ -8,6 +8,13 @@ comment: true
 
 
 
+
+
+- 参考博客：[Xiao Fan](https://fanxiao.tech/posts/2021-03-02-mit-6s081-notes/#85-lab-6-copy-on-write-fork)
+- [RISC-V手册](http://staff.ustc.edu.cn/~llxx/cod/reference_books/RISC-V-Reader-Chinese-v2p12017.pdf)
+
+
+
 # 1 Copy-on-Write Fork 介绍
 
 **基本流程**
