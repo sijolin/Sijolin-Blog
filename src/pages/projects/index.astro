@@ -6,40 +6,41 @@ import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 import Sponsors from '@/components/projects/Sponsors.astro'
 import Sponsorship from '@/components/projects/Sponsorship.astro'
-import alipay from '@/assets/alipay-qrcode.jpg'
+// import alipay from '@/assets/alipay-qrcode.jpg'
 import KeyIcon from '@/assets/icons/key.svg'
-import wechat from '@/assets/wechat-qrcode.jpg'
+// import wechat from '@/assets/wechat-qrcode.jpg'
 import config from '@/site-config'
 
-const headings = [
-  { depth: 2, slug: 'theme', text: 'Theme' },
-  { depth: 2, slug: 'programs', text: 'Programs' },
-  { depth: 2, slug: 'learnings', text: 'Learnings' },
-  { depth: 2, slug: 'others', text: 'Others' },
-  { depth: 2, slug: 'gpg-signature', text: 'GPG Signature' },
-  { depth: 2, slug: 'sponsorship', text: 'Sponsorship' }
-]
+// const headings = [
+//   { depth: 2, slug: 'theme', text: 'Theme' },
+//   { depth: 2, slug: 'programs', text: 'Programs' },
+//   { depth: 2, slug: 'learnings', text: 'Learnings' },
+//   { depth: 2, slug: 'others', text: 'Others' },
+//   { depth: 2, slug: 'gpg-signature', text: 'GPG Signature' },
+//   { depth: 2, slug: 'sponsorship', text: 'Sponsorship' }
+// ]
 ---
 
-<PageLayout title='Projects' {headings} info={{ slug: '/projects', hideComment: true }}>
+<!-- <PageLayout title='Projects' {headings} info={{ slug: '/projects', hideComment: true }}> -->
+<PageLayout title='Projects' info={{ slug: '/projects', hideComment: true }}>
   <p>Github Activities:</p>
   <p>
     <Image
-      src='https://ghchart.rshah.org/659eb9/cworld1'
+      src='https://ghchart.rshah.org/659eb9/sijolin'
       alt='github activities'
       inferSize
       loading='lazy'
     />
   </p>
-  <p>
+  <!-- <p>
     If you think it would be useful or interesting to collaborate on a project, you can donate to
     support my work or contact me to discuss a project.
   </p>
   <Button title='Checkout sponsorship' class='w-fit' href='#sponsorship'>
     <Icon class='size-5' name='receive-money' slot='before' />
-  </Button>
+  </Button> -->
 
-  <h2 id='theme'>Theme</h2>
+  <!-- <h2 id='theme'>Theme</h2>
   <ProjectSection
     projects={[
       {
@@ -55,9 +56,9 @@ const headings = [
         ]
       }
     ]}
-  />
+  /> -->
 
-  <h2 id='programs'>Programs</h2>
+  <!-- <h2 id='programs'>Programs</h2>
   <ProjectSection
     projects={[
       {
@@ -82,8 +83,8 @@ const headings = [
         ]
       }
     ]}
-  />
-  <Collapse title='Some old projects'>
+  /> -->
+  <!-- <Collapse title='Some old projects'>
     <ProjectSection
       projects={[
         {
@@ -101,16 +102,16 @@ const headings = [
         }
       ]}
     />
-  </Collapse>
+  </Collapse> -->
 
-  <h2 id='learnings'>Learnings</h2>
+  <!-- <h2 id='learnings'>Learnings</h2>
   <ProjectSection
     class='my-2'
     projects={[
       {
-        name: 'Rust Learning',
-        description: 'Some notes and code about CWorld learning Rust',
-        links: [{ type: 'github', href: 'https://github.com/cworld1/rust-learning' }]
+        name: 'CS61B',
+        description: 'The second course of UC Berkeley\'s CS61 series which mainly focuses on the design of data structures and algorithms',
+        links: [{ type: 'github', href: 'https://github.com/sijolin/CS61B' }]
       },
       {
         name: 'CS 213 Learning',
@@ -123,9 +124,9 @@ const headings = [
         ]
       }
     ]}
-  />
+  /> -->
 
-  <h2 id='others'>Others</h2>
+  <!-- <h2 id='others'>Others</h2>
   <ProjectSection
     projects={[
       {
@@ -139,20 +140,20 @@ const headings = [
         links: [{ type: 'github', href: 'https://github.com/zhuozhiyongde' }]
       }
     ]}
-  />
+  /> -->
 
   <!-- gpg signature -->
-  <h2 id='gpg-signature'>GPG Signature</h2>
+  <!-- <h2 id='gpg-signature'>GPG Signature</h2>
   <p>
     You can verify the authenticity of the files I signed by checking the GPG signature. My GPG key
     is <code>114514</code>, and you can find it on the opengpg key servers or download from it.
   </p>
   <Button href='https://keys.openpgp.org/search?q=114514' title='Checkout my key' target='_blank'>
     <KeyIcon class='size-5' slot='before' />
-  </Button>
+  </Button> -->
 
   <!-- sponsorship -->
-  <h2 id='sponsorship'>Sponsorship</h2>
+  <!-- <h2 id='sponsorship'>Sponsorship</h2>
   <p>Please leave a message or contact me proactively after sponsorship.</p>
   <Sponsorship
     methods={[
@@ -169,7 +170,7 @@ const headings = [
       { name: 'Anonymous', amount: '20.00', date: '2022-04-06' }
     ]}
   />
-</PageLayout>
+</PageLayout> -->
 
 <script
   is:inline

@@ -17,7 +17,7 @@ comment: true
 
 其中，`usys.pl` 为每个系统调用生成统一的汇编代码模板，处理系统调用号和参数传递，触发软中断进入内核态。
 
-# 1 Sysetm call tracing
+## 1 Sysetm call tracing
 
 要求：
 1. 新增 `trace` 系统调用
@@ -99,9 +99,9 @@ void syscall(void)
 ```
 
 
-# 2 Sysinfo
+## 2 Sysinfo
 
-## 2.1 系统调用声明
+### 2.1 系统调用声明
 
 要求：新增 `sysinfo` 的系统调用，其参数为 `struct sysinfo*`（声明在 `kernel/sysinfo.h`），要求填充该结构体。
 
@@ -112,7 +112,7 @@ struct sysinfo;
 int sysinfo(struct sysinfo*);
 ```
 
-## 2.2 收集空闲内存量
+### 2.2 收集空闲内存量
 
 在 `kernel/kalloc.c` 中存在以下声明：
 ```C
@@ -140,7 +140,7 @@ uint64 freememSize(void) {
 }
 ```
 
-## 2.3 收集进程数量
+### 2.3 收集进程数量
 `struct sysinfo` 中的 `nproc` 设置为 `state` 不为 UNUSED 的进程数量。
 
 在 `kernel/proc.c` 的头部声明了 `struct proc proc[NPROC]`，这相当于是进程数组，因此我们只需要遍历数组即可：`
@@ -158,7 +158,7 @@ uint64 nproc_active(void) {
 }
 ```
 
-## 2.4 实现 sysinfo
+### 2.4 实现 sysinfo
 
 在 `kernel/sysproc.c` 中添加 `sys_sysinfo` 函数：
 ```C

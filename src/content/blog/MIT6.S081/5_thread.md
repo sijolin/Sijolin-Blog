@@ -6,7 +6,7 @@ tags: ['MIT6.S081']
 comment: true
 ---
 
-# 0 Uthread: switching between threads
+## 1 Uthread: switching between threads
 
 目的是实现线程的创建和切换。
 
@@ -95,7 +95,7 @@ thread_switch((uint64) &t->context, (uint64) &next_thread->context);
 
 
 
-# 1 Using threads
+## 2 Using threads
 
 目的是使用锁来解决 `put` 中存在的竞争条件。
 
@@ -155,7 +155,7 @@ static void put(int key, int value) {
 
 
 
-# 2 Barrier
+## 3 Barrier
 
 目的是实现 `barrier()`，用于同步所有线程。
 
